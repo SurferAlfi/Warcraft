@@ -1,0 +1,171 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Fantasy_Game
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            gameTitle();
+        }
+
+        public static void gameTitle()
+        {
+            Console.WriteLine("Welcome to my game.");
+            Console.WriteLine("Press ENTER to begin.");
+            Console.ReadLine();
+            Console.Clear();
+            first();
+        }
+
+        public static void first()
+        {
+            string choice;
+            Console.WriteLine("You wake up in Azeroth, in a hut, and remembering nothing.");
+            Console.WriteLine("What do you do?");
+            Console.WriteLine("1. Look for a dagger");
+            Console.WriteLine("2. Try to get out");
+            Console.WriteLine("3. Go for help");
+            Console.Write("Choice: ");
+            choice = Console.ReadLine().ToLower();
+            Console.Clear();
+
+            switch (choice)
+            {
+                case "1":
+                case "Look for a dagger":
+                case "dagger":
+                    {
+                        Console.WriteLine("Getting the dagger");
+                        Console.WriteLine("Getting a sword");
+                        Console.WriteLine("Going to the door, and listen");
+                        Console.WriteLine("Hearing orcs from outside");
+                        Console.WriteLine("They see you trying to flee, and then stabbing you in the back");
+                        Console.WriteLine("Press ENTER to continue");
+                        Console.ReadLine();
+                        gameOver();
+                        break;
+                    }
+                case "2":
+                case "Try get out":
+                case "Out":
+                    {
+                        Console.WriteLine("The door opens slowly");
+                        Console.WriteLine("You look out and see 3 orcs near the fire");
+                        Console.WriteLine("They are preparing to eat");
+                        Console.WriteLine("Press ENTER to continue");
+                        Console.ReadLine();
+                        second();
+                        break;
+                    }
+                case "3":
+                case "Go for help":
+                case "Help":
+                    {
+                        Console.WriteLine("Sneaking into the nearby bushes");
+                        Console.WriteLine("Trying to be as quiet as you can");
+                        Console.WriteLine("Hearing other orcs coming from patrol");
+                        Console.WriteLine("Press ENTER to continue");
+                        Console.ReadLine();
+                        second();
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("I dont understand the command...");
+                        Console.WriteLine("Press ENTER to try again.");
+                        Console.ReadLine();
+                        first();
+                        break;
+                    }
+
+            }
+        }
+        public static void second()
+        {
+            Random rnd = new Random();
+            string[] secOptions = {"In the woods you see warlocks coming by.",
+            "In the woods you hear wolves.",
+            "In the woods you see archmages creeping in."};
+            int randomNumber = rnd.Next(0, 3);
+            string secText = secOptions[randomNumber];
+
+            string secChoice;
+
+            Console.WriteLine(secText);
+            Console.WriteLine("Do you try to hide in the bushes; Yes or No?");
+            Console.Write("Choice: ");
+            secChoice = Console.ReadLine().ToLower();
+
+            if (secChoice == "yes" || secChoice == "y")
+            {
+                third();
+            }
+            else if (secChoice == "no" || secChoice == "n")
+            {
+                Console.WriteLine("An orc hears you stepping on a rod, and throws a dagger on you.");
+                Console.WriteLine("Press 'ENTER' to continue");
+                Console.ReadLine();
+                gameOver();
+            }
+            else
+            {
+                Console.WriteLine("I dont understand the command...");
+                Console.WriteLine("Press ENTER to try again.");
+                Console.ReadLine();
+                second();
+            }
+        }
+
+        public static void third() //loop (whileloop)
+        {
+            int far;
+
+            Console.WriteLine("You go to the fence and look to Alterac Mountains ion the far.");
+            Console.WriteLine("And then you realize, you are not far from the Aliiance camp.");
+            Console.WriteLine("How many kms away can it be?");
+            Console.Write("Far: ");
+            int.TryParse(Console.ReadLine(), out far);
+            while(far < 4)
+            {
+                Console.WriteLine("Good, that can be walked in an hour.");
+                Console.WriteLine("How much is it?");
+                Console.Write("Far: ");
+                int.TryParse(Console.ReadLine(), out far);
+            }
+
+            Console.WriteLine("Thats good, shouldn't get a horse.");
+            Console.WriteLine("Pres Enter to continue.");
+            Console.ReadLine();
+            youWIn();
+        }
+
+        public static void gameOver()
+        {
+            Console.Clear();
+            Console.WriteLine("You died for the Alliance!");
+            Console.WriteLine("FOR THE HORDE!");
+            Console.WriteLine("Press ENTER to try again.");
+            Console.ReadLine();
+            Console.Clear();
+            gameTitle();
+        }
+
+        public static void youWIn()
+        {
+            Console.Clear();
+            Console.WriteLine("You could get back to the human's camp");
+            Console.WriteLine("You can Alert Arthas, about the Orcs");
+            Console.WriteLine("Next dawn you raided the orc camp, killing them all!");
+            Console.WriteLine("Press ENTER to try again.");
+            Console.ReadLine();
+            Console.Clear();
+            gameTitle();
+        }
+
+    }
+}
